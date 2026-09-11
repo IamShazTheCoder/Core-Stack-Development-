@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Forms</title>
+    </head>
+    <body>
+    <div style="background-color: bisque;">
+        <form aria-setsize="10px">
+            <div>
+                <label for="fname" >FirstName:</label>
+                <input type="text" id="fname" name="fname" placeholder="Alice" required>
+            </div>
+            <br>
+            <div>
+                <label for="lname" >LastName:</label>
+                <input type="text" id="lname" name="lname" placeholder="bob" required >
+            </div>
+            <br>
+            <div>
+                <label for="pass" >Password:</label>
+                <input type="text" id="pass" name="pass" maxlength="12" required>
+            </div>
+            <br>
+            <div>
+                <label for="email">email:</label>
+                <input id="email" type="email" name="email" maxlength="12" required placeholder="info@gmail.com">
+            </div>
+            <br>
+             <div>
+                <label for="q">quantity</label>
+                <input id="q" type="number" value="1" name="q" min="1" max="99">
+            </div>
+            <br>
+            <div>
+                <label for="date">Date:</label>
+                <input id="date" type="date" name="date">
+            </div>
+            <br>
+            <div>
+                <lable>Title: </lable>
+
+                <label for="M">Mr</label>
+                <input id="M" name="f" type="radio" value="Mr">
+
+                <label for="Mrs" >Mrs</label>
+                <input id="Mrs"  name="f" type="radio" Value="Mrs">
+
+                <label for="PhD" >PhD</label>
+                <input id="PhD"  name="f" type="radio" value="PhD">
+            </div>
+            <br>
+            <div>
+                <label for="Payment"> Payment:</label>
+                <select>
+                    <option>visa</option>
+                    <option>mastercard</option>
+                    <option>COD</option>
+                </select>
+            </div>
+            <br>
+            <div>
+                <input type="reset">
+            </div>
+            <br>
+            <div>
+                <input type="submit">
+            </div>    
+            <br>
+        </form>
+    </div>
+    </body>
+</html>
