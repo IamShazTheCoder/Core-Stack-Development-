@@ -1,0 +1,43 @@
+body{
+    background-color: lightcyan;
+    min-height: 100vh;
+}
+
+header{
+    background-color: lightblue;
+    height: 100px;
+    display: flex;
+}
+
+.inner-text{
+    font-size: larger;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: bold;
+    margin:auto;
+    font-weight: 100;
+}
+
+.main-container{
+    display: flex;
+    min-height: calc(100vh - 100px);   
+    flex-grow: 1;
+}
+
+.sidebar{
+    display: flex;
+    height: 100vh;
+    width: 300px;
+    background-color: lightgrey;
+}
+
+.main-subcontainer{
+    margin-left: 320px;
+    margin-top: 120px;
+    height: 500px;
+    width: 300px;
+    background-color: lightblue;
+}
+
+main{
+    flex-grow: 1;
+}
