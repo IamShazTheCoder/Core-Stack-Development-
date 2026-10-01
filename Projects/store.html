@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hearth & Hand – Handmade Home Goods</title>
+<meta name="description" content="Handmade ceramics, textiles and home goods, shipped to your door.">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F7F9;--surface:#fff;--ink:#16213A;--muted:#5B6479;--line:#DDE1EA;--brand:#1F3A6E;--brand-ink:#fff;--accent:#E8B33A;--tint:#E9EDF5;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1524;--surface:#18203A;--ink:#EEF1F8;--muted:#9CA6BE;--line:#2B3556;--brand:#8FB0F5;--brand-ink:#0F1524;--tint:#1E2848}}
+:root[data-theme="dark"]{--bg:#0F1524;--surface:#18203A;--ink:#EEF1F8;--muted:#9CA6BE;--line:#2B3556;--brand:#8FB0F5;--brand-ink:#0F1524;--tint:#1E2848}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",sans-serif;line-height:1.1;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.btn{display:inline-block;border:0;border-radius:999px;padding:12px 24px;font:700 15px "DM Sans",sans-serif;cursor:pointer;text-decoration:none;background:var(--brand);color:var(--brand-ink)}
+.btn.alt{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:24px;height:64px}
+.logo{font:800 22px "Bricolage Grotesque",sans-serif;text-decoration:none;margin-right:auto}
+.nav a.l{text-decoration:none;font-weight:500;color:var(--muted)}
+.nav a.l:hover{color:var(--ink)}
+.cartbtn{background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:8px 16px;font:700 14px "DM Sans";cursor:pointer}
+@media(max-width:700px){.nav a.l{display:none}}
+.hero{padding:64px 0 48px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(40px,6.5vw,78px);font-weight:800}
+.hero p{font-size:19px;color:var(--muted);max-width:46ch;margin:20px 0 28px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.stack{position:relative;height:340px}
+.stack div{position:absolute;border-radius:24px;display:grid;place-items:center;font-size:84px}
+.stack .a{inset:0 22% 22% 0;background:var(--brand)}
+.stack .b{inset:30% 0 0 40%;background:var(--accent)}
+.stack .c{inset:55% 62% 0 6%;background:var(--tint);font-size:56px;border:2px solid var(--line)}
+@media(max-width:800px){.hero .wrap{grid-template-columns:1fr}.stack{height:260px}}
+.bar{background:var(--ink);color:var(--bg)}
+.bar .wrap{display:flex;flex-wrap:wrap;gap:12px 36px;justify-content:space-between;padding-top:14px;padding-bottom:14px;font-weight:500;font-size:15px}
+h2{font-size:clamp(30px,4vw,44px);font-weight:700}
+.sub{color:var(--muted);margin:10px 0 28px;max-width:56ch}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 16px;font:500 14px "DM Sans";cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.thumb{height:180px;display:grid;place-items:center;font-size:72px;position:relative}
+.tag{position:absolute;top:12px;left:12px;background:var(--surface);color:var(--ink);font:700 12px "DM Sans";border-radius:999px;padding:3px 10px}
+.card .body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:19px;font-weight:700}
+.card .desc{color:var(--muted);font-size:14px;flex:1}
+.rate{font-size:13px;color:var(--muted)}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.price{font:700 20px "Bricolage Grotesque",sans-serif}
+.price s{font:400 14px "DM Sans";color:var(--muted);margin-left:6px}
+.add{background:var(--brand);color:var(--brand-ink);border:0;border-radius:999px;padding:8px 16px;font:700 14px "DM Sans";cursor:pointer}
+.about{background:var(--tint)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media(max-width:800px){.cols{grid-template-columns:1fr}}
+.cols p{color:var(--muted);margin:0 0 14px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fact{background:var(--surface);border-radius:16px;padding:20px}
+.fact b{display:block;font:800 30px "Bricolage Grotesque",sans-serif}
+.fact span{color:var(--muted);font-size:14px}
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.perk h3{font-size:19px;margin:8px 0 4px}
+.perk p{margin:0;color:var(--muted);font-size:15px}
+.perk .i{font-size:30px}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+blockquote{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+blockquote p{margin:0 0 12px}
+blockquote footer{color:var(--muted);font-size:14px;position:static;border:0;background:none;padding:0}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";font-size:22px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin:10px 0 0;max-width:70ch}
+form{display:grid;gap:14px}
+label{font-weight:700;font-size:14px;display:grid;gap:6px}
+input,textarea{font:400 16px "DM Sans";padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
+.info p{margin:0 0 12px;color:var(--muted)}
+.info b{color:var(--ink)}
+.ok{color:var(--brand);font-weight:700;min-height:1.5em}
+footer.site{background:var(--ink);color:var(--bg);padding:40px 0 24px}
+footer.site .wrap{display:flex;flex-wrap:wrap;gap:24px 56px;justify-content:space-between}
+footer.site a{display:block;opacity:.85;text-decoration:none;margin:4px 0}
+footer.site small{display:block;width:100%;opacity:.7;border-top:1px solid rgba(255,255,255,.2);padding-top:16px}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--surface);z-index:30;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-8px 0 30px rgba(0,0,0,.25);padding:calc(20px + env(safe-area-inset-top,0px)) 20px calc(20px + env(safe-area-inset-bottom,0px))}
+.drawer.open{transform:none}
+.drawer h3{font-size:24px;margin-bottom:12px}
+#items{flex:1;overflow:auto}
+.line{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.line .e{font-size:30px}
+.line div{flex:1}
+.line small{color:var(--muted)}
+.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.total{display:flex;justify-content:space-between;font:700 20px "Bricolage Grotesque";padding:16px 0}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:20;display:none}
+.scrim.open{display:block}
+@media(prefers-reduced-motion:reduce){.drawer{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="logo" href="#top">Hearth & Hand</a>
+  <a class="l" href="#shop">Shop</a><a class="l" href="#about">About</a><a class="l" href="#faq">FAQ</a><a class="l" href="#contact">Contact</a>
+  <button class="cartbtn" id="openCart" aria-label="Open cart">Cart (<span id="count">0</span>)</button>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <div>
+    <h1>Handmade things for the home you live in.</h1>
+    <p>Ceramics, linens and candles made in small batches by independent makers. Free delivery on orders over $60.</p>
+    <div class="cta"><a class="btn" href="#shop">Shop all products</a><a class="btn alt" href="#about">Our story</a></div>
+  </div>
+  <div class="stack" aria-hidden="true"><div class="a">🏺</div><div class="b">🕯️</div><div class="c">🧺</div></div>
+</div></section>
+
+<div class="bar"><div class="wrap"><span>Free shipping over $60</span><span>30-day returns</span><span>Secure checkout</span><span>Made by 40+ independent makers</span></div></div>
+
+<section id="shop"><div class="wrap">
+  <h2>Shop</h2>
+  <p class="sub">Everything is made in small batches, so popular items can sell out.</p>
+  <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="about" id="about"><div class="wrap cols">
+  <div>
+    <h2>Made slowly, sold directly.</h2>
+    <p style="margin-top:18px">Hearth & Hand started in 2018 on a kitchen table, selling mugs from one potter. Today we work with more than 40 makers and pay them a fair price for every piece.</p>
+    <p>We pack every order by hand, use paper and cardboard instead of plastic, and answer every message ourselves.</p>
+    <a class="btn" href="#contact">Talk to us</a>
+  </div>
+  <div class="facts">
+    <div class="fact"><b>8,000+</b><span>Orders delivered</span></div>
+    <div class="fact"><b>40+</b><span>Independent makers</span></div>
+    <div class="fact"><b>4.8/5</b><span>Average review</span></div>
+    <div class="fact"><b>2018</b><span>Year we opened</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Shopping with us</h2>
+  <div class="perks" style="margin-top:28px">
+    <div class="perk"><div class="i">🚚</div><h3>Fast delivery</h3><p>Orders ship in 1–2 business days. Delivery takes 3–6 days.</p></div>
+    <div class="perk"><div class="i">↩️</div><h3>Easy returns</h3><p>Return unused items within 30 days for a full refund.</p></div>
+    <div class="perk"><div class="i">🔒</div><h3>Secure payment</h3><p>Pay by card, bank transfer or cash on delivery.</p></div>
+    <div class="perk"><div class="i">🎁</div><h3>Gift ready</h3><p>Add a handwritten note and recycled wrapping at checkout.</p></div>
+  </div>
+</div></section>
+
+<section class="about"><div class="wrap">
+  <h2>What customers say</h2>
+  <div class="quotes" style="margin-top:28px">
+    <blockquote><p>The mug feels even better than the photos. Arrived wrapped in paper, not plastic.</p><footer>Ayesha K. · Verified buyer</footer></blockquote>
+    <blockquote><p>Ordered a gift set for my sister. Delivery was two days early and she loved it.</p><footer>Daniel R. · Verified buyer</footer></blockquote>
+    <blockquote><p>One bowl arrived chipped. They replaced it the same week without any fuss.</p><footer>Marta S. · Verified buyer</footer></blockquote>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap" style="max-width:800px">
+  <h2>Questions</h2>
+  <div style="margin-top:24px">
+    <details><summary>How long does delivery take?</summary><p>Orders leave our studio in 1–2 business days. Standard delivery takes 3–6 days; you receive a tracking link by email.</p></details>
+    <details><summary>Can I return an item?</summary><p>Yes. Contact us within 30 days of delivery and we send a prepaid label. Refunds go back to your original payment method.</p></details>
+    <details><summary>Which payment methods do you accept?</summary><p>Visa, Mastercard, bank transfer and cash on delivery in selected areas.</p></details>
+    <details><summary>Do you ship internationally?</summary><p>Yes, to most countries. Shipping costs and times show at checkout.</p></details>
+  </div>
+</div></section>
+
+<section class="about" id="contact"><div class="wrap cols">
+  <div>
+    <h2>Get in touch</h2>
+    <form id="form" style="margin-top:24px">
+      <label>Name<input name="n" required autocomplete="name"></label>
+      <label>Email<input type="email" name="e" required autocomplete="email"></label>
+      <label>Message<textarea name="m" rows="4" required></textarea></label>
+      <button class="btn" type="submit">Send message</button>
+      <div class="ok" id="ok" role="status"></div>
+    </form>
+  </div>
+  <div class="info">
+    <h2 style="margin-bottom:24px">Visit or call</h2>
+    <p><b>Studio &amp; shop</b><br>12 Market Lane, Your City, 00000</p>
+    <p><b>Phone / WhatsApp</b><br>+00 000 0000000</p>
+    <p><b>Email</b><br>hello@hearthandhand.example</p>
+    <p><b>Hours</b><br>Mon–Sat 9:00–18:00<br>Sunday closed</p>
+  </div>
+</div></section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <div><b style="font:800 20px 'Bricolage Grotesque'">Hearth & Hand</b><p style="opacity:.8;max-width:30ch">Handmade home goods from independent makers.</p></div>
+  <div><b>Shop</b><a href="#shop">All products</a><a href="#about">About us</a></div>
+  <div><b>Help</b><a href="#faq">Delivery &amp; returns</a><a href="#faq">Payments</a><a href="#contact">Contact</a></div>
+  <div><b>Follow</b><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">Pinterest</a></div>
+  <small>© 2026 Hearth &amp; Hand. All rights reserved. · Privacy · Terms</small>
+</div></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+  <h3>Your cart</h3>
+  <div id="items"></div>
+  <div class="total"><span>Total</span><span id="total">$0</span></div>
+  <button class="btn" id="checkout">Checkout</button>
+  <button class="btn alt" id="closeCart" style="margin-top:8px">Keep shopping</button>
+  <div class="ok" id="msg" role="status" style="margin-top:8px"></div>
+</aside>
+
+<script>
+const P=[
+{id:1,n:"Speckled stoneware mug",c:"Ceramics",p:24,o:30,e:"☕",bg:"#C9D6EE",r:"4.9 (212)",d:"Wheel-thrown, 350 ml, dishwasher safe.",t:"Bestseller"},
+{id:2,n:"Serving bowl set",c:"Ceramics",p:58,e:"🥣",bg:"#F3DDA0",r:"4.8 (96)",d:"Set of three nesting bowls in a matte glaze."},
+{id:3,n:"Linen table runner",c:"Textiles",p:36,e:"🧵",bg:"#D5E3D8",r:"4.7 (64)",d:"Stonewashed European linen, 180 cm."},
+{id:4,n:"Woven throw blanket",c:"Textiles",p:89,o:110,e:"🧶",bg:"#E3CFE8",r:"4.9 (148)",d:"Soft cotton blend with hand-knotted fringe.",t:"Sale"},
+{id:5,n:"Soy wax candle",c:"Candles",p:19,e:"🕯️",bg:"#F5D6C6",r:"4.8 (301)",d:"Cedar and orange peel. Burns for 45 hours."},
+{id:6,n:"Candle gift trio",c:"Candles",p:49,e:"🎁",bg:"#CFE3EA",r:"4.9 (77)",d:"Three travel-size candles in a reusable box.",t:"New"},
+{id:7,n:"Hand-carved wooden spoon",c:"Kitchen",p:14,e:"🥄",bg:"#E6D8BE",r:"4.6 (53)",d:"Carved from sustainably sourced beech."},
+{id:8,n:"Seagrass storage basket",c:"Kitchen",p:32,e:"🧺",bg:"#D9E5C4",r:"4.7 (88)",d:"Holds blankets, toys or firewood. 35 cm wide."}
+];
+const $=s=>document.querySelector(s);
+let cat="All",cart={};
+const money=n=>"$"+n.toFixed(2).replace(/\.00$/,"");
+function renderFilters(){
+  const cats=["All",...new Set(P.map(x=>x.c))];
+  $("#filters").innerHTML=cats.map(c=>`<button class="chip" aria-pressed="${c===cat}" data-c="${c}">${c}</button>`).join("");
+}
+function renderGrid(){
+  $("#grid").innerHTML=P.filter(x=>cat==="All"||x.c===cat).map(x=>`
+  <article class="card"><div class="thumb" style="background:${x.bg}">${x.e}${x.t?`<span class="tag">${x.t}</span>`:""}</div>
+  <div class="body"><h3>${x.n}</h3><div class="rate">★ ${x.r}</div><div class="desc">${x.d}</div>
+  <div class="row"><span class="price">${money(x.p)}${x.o?`<s>${money(x.o)}</s>`:""}</span><button class="add" data-id="${x.id}" aria-label="Add ${x.n} to cart">Add to cart</button></div></div></article>`).join("");
+}
+function renderCart(){
+  const ids=Object.keys(cart);let tot=0,cnt=0;
+  $("#items").innerHTML=ids.length?ids.map(id=>{const x=P.find(p=>p.id==id),q=cart[id];tot+=x.p*q;cnt+=q;
+    return `<div class="line"><span class="e">${x.e}</span><div><b>${x.n}</b><br><small>${money(x.p)} each</small></div>
+    <span class="qty"><button data-m="${id}" aria-label="Remove one">–</button> ${q} <button data-p="${id}" aria-label="Add one">+</button></span></div>`}).join("")
+    :"<p style='color:var(--muted)'>Your cart is empty. Add a product to get started.</p>";
+  $("#total").textContent=money(tot);$("#count").textContent=cnt;
+}
+function toggle(o){$("#drawer").classList.toggle("open",o);$("#scrim").classList.toggle("open",o);$("#drawer").setAttribute("aria-hidden",!o);$("#msg").textContent=""}
+document.addEventListener("click",e=>{
+  const t=e.target;
+  if(t.dataset.c){cat=t.dataset.c;renderFilters();renderGrid()}
+  if(t.dataset.id){cart[t.dataset.id]=(cart[t.dataset.id]||0)+1;renderCart();t.textContent="Added";setTimeout(()=>t.textContent="Add to cart",900)}
+  if(t.dataset.p){cart[t.dataset.p]++;renderCart()}
+  if(t.dataset.m){if(--cart[t.dataset.m]<=0)delete cart[t.dataset.m];renderCart()}
+});
+$("#openCart").onclick=()=>toggle(true);
+$("#closeCart").onclick=$("#scrim").onclick=()=>toggle(false);
+document.addEventListener("keydown",e=>{if(e.key==="Escape")toggle(false)});
+$("#checkout").onclick=()=>{$("#msg").textContent=Object.keys(cart).length?"This is a demo store. Connect a payment provider to take orders.":"Add a product before checking out."};
+$("#form").onsubmit=e=>{e.preventDefault();$("#ok").textContent="Thanks! We reply within one business day.";e.target.reset()};
+renderFilters();renderGrid();renderCart();
+</script>
+</body>
+</html>
