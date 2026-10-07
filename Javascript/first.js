@@ -43,8 +43,10 @@ if(marks >= 80 && marks <= 100){
     grade = "B";
 }else if(marks >= 60 && marks < 70){
     grade = "C";
+}else if(marks >= 50 && marks < 60){
+    grade = "D";
 }else{
     grade = "Fail";
 }
 
-console.log("Your Grade is : " + grade);
+console.log("Your Grade  According to Marksis : " + grade);
