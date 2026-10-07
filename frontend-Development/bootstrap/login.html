@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sign in · Northlight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#F3F4FB;--panel:#fff;--text:#12142B;--muted:#62668A;--line:#D9DCEE;--accent:#5B3DF5;--accent-ink:#fff;--err:#D6285E;--ok:#0E9F7E;
+  --head:'Bricolage Grotesque',Georgia,serif;--body:'Instrument Sans',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A0C1C;--panel:#12152D;--text:#EEF0FF;--muted:#9A9FC4;--line:#262B52;--accent:#8A74FF;--accent-ink:#0A0C1C;--err:#FF6B95;--ok:#3DF2C0}}
+:root[data-theme="dark"]{--bg:#0A0C1C;--panel:#12152D;--text:#EEF0FF;--muted:#9A9FC4;--line:#262B52;--accent:#8A74FF;--accent-ink:#0A0C1C;--err:#FF6B95;--ok:#3DF2C0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font:400 16px/1.5 var(--body);display:grid;grid-template-columns:1.1fr 1fr}
+/* Left: living field */
+.stage{position:relative;overflow:hidden;background:#090B1E;color:#EEF0FF;display:flex;flex-direction:column;justify-content:space-between;padding:40px 48px;min-height:100vh}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.stage::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 20% 85%,rgba(255,77,157,.28),transparent 70%),radial-gradient(50% 45% at 85% 10%,rgba(61,242,208,.2),transparent 70%);pointer-events:none;animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(3%,-3%) scale(1.08)}}
+.brand,.pitch{position:relative;z-index:1}
+.brand{display:flex;align-items:center;gap:12px;font:700 20px var(--head)}
+.mark{width:30px;height:30px;border-radius:50%;background:conic-gradient(from 0deg,#3DF2D0,#8A74FF,#FF4D9D,#3DF2D0);animation:spin 8s linear infinite;mask:radial-gradient(circle,transparent 8px,#000 9px);-webkit-mask:radial-gradient(circle,transparent 8px,#000 9px)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pitch h2{font:800 clamp(38px,5vw,68px)/1 var(--head);letter-spacing:-.03em;margin:0 0 18px;max-width:11ch}
+.pitch h2 span{display:inline-block;opacity:0;transform:translateY(40px) rotate(4deg);animation:rise .9s cubic-bezier(.2,.9,.2,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.pitch p{margin:0;color:#B3B8DE;max-width:36ch}
+/* Right: form */
+.side{display:grid;place-items:center;padding:32px}
+.card{position:relative;width:min(100%,420px);background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:40px 36px;transform-style:preserve-3d;transition:transform .15s ease-out;overflow:hidden;animation:cardin .9s .15s cubic-bezier(.2,.9,.2,1) both}
+@keyframes cardin{from{opacity:0;transform:translateY(30px) scale(.97)}}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--accent) 22%,transparent),transparent 70%);opacity:.9;pointer-events:none}
+.card>*{position:relative}
+h1{font:800 32px/1.1 var(--head);letter-spacing:-.02em;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 28px}
+.field{position:relative;margin-bottom:18px}
+.field input{width:100%;height:56px;padding:22px 48px 6px 16px;font:500 16px var(--body);color:var(--text);background:transparent;border:1.5px solid var(--line);border-radius:14px;outline:none;transition:border-color .2s,box-shadow .2s}
+.field label{position:absolute;left:17px;top:17px;color:var(--muted);pointer-events:none;transition:all .2s cubic-bezier(.2,.9,.2,1);transform-origin:left}
+.field input:focus,.field input:not(:placeholder-shown){}
+.field input:focus+label,.field input:not(:placeholder-shown)+label{top:8px;font-size:12px;color:var(--accent)}
+.field input:focus{border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 22%,transparent)}
+.field.bad input{border-color:var(--err)}
+.field.bad{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+.msg{display:block;color:var(--err);font-size:13px;min-height:0;max-height:0;overflow:hidden;transition:max-height .25s,margin .25s}
+.field.bad .msg{max-height:24px;margin-top:6px}
+.eye{position:absolute;right:8px;top:8px;width:40px;height:40px;border:0;border-radius:10px;background:none;color:var(--muted);cursor:pointer;display:grid;place-items:center}
+.eye:hover{color:var(--text)}
+.eye svg{width:20px;height:20px}
+.row{display:flex;justify-content:space-between;align-items:center;margin:4px 0 24px;font-size:14px}
+.row label{display:flex;gap:8px;align-items:center;cursor:pointer;color:var(--muted)}
+.row input{accent-color:var(--accent);width:16px;height:16px}
+a{color:var(--accent);text-decoration:none;font-weight:600}
+a:hover{text-decoration:underline}
+.btn{position:relative;width:100%;height:56px;border:0;border-radius:14px;background:var(--accent);color:var(--accent-ink);font:600 16px var(--body);cursor:pointer;overflow:hidden;transition:transform .15s,border-radius .4s,width .4s;display:grid;place-items:center}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.98)}
+.btn::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s}
+.btn:hover::before{transform:translateX(120%)}
+.btn .lbl,.btn .spin,.btn .tick{grid-area:1/1;transition:opacity .25s,transform .3s}
+.btn .spin,.btn .tick{opacity:0;transform:scale(.5)}
+.spin{width:22px;height:22px;border:3px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .7s linear infinite}
+.tick{width:28px;height:28px}
+.tick path{stroke-dasharray:30;stroke-dashoffset:30}
+.btn.loading{width:56px;margin-inline:auto;border-radius:50%}
+.btn.loading .lbl{opacity:0;transform:scale(.5)}
+.btn.loading .spin{opacity:1;transform:none}
+.btn.done{width:100%;background:var(--ok);border-radius:14px}
+.btn.done .spin{opacity:0}
+.btn.done .lbl{opacity:0}
+.btn.done .tick{opacity:1;transform:none}
+.btn.done .tick path{animation:draw .5s .1s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.divider{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;margin:24px 0 16px}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.alt{width:100%;height:48px;border:1.5px solid var(--line);border-radius:14px;background:none;color:var(--text);font:500 15px var(--body);cursor:pointer;display:flex;gap:10px;align-items:center;justify-content:center;transition:border-color .2s,background .2s}
+.alt:hover{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.foot{text-align:center;margin:22px 0 0;color:var(--muted);font-size:14px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media (max-width:860px){
+  body{grid-template-columns:1fr}
+  .stage{min-height:auto;padding:28px 24px;gap:32px}
+  .pitch h2{font-size:38px;max-width:none}
+  .card{padding:32px 24px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<section class="stage" aria-label="Northlight">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="brand"><span class="mark"></span>Northlight</div>
+  <div class="pitch">
+    <h2 id="hl"></h2>
+    <p>Your projects, notes and teammates are exactly where you left them.</p>
+  </div>
+</section>
+
+<main class="side">
+  <div class="card" id="card">
+    <h1>Welcome back</h1>
+    <p class="sub">Sign in to continue to your workspace.</p>
+    <form id="f" novalidate>
+      <div class="field" id="fe">
+        <input id="email" type="email" placeholder=" " autocomplete="email" required>
+        <label for="email">Email address</label>
+        <span class="msg" id="me" role="alert"></span>
+      </div>
+      <div class="field" id="fp">
+        <input id="pw" type="password" placeholder=" " autocomplete="current-password" required>
+        <label for="pw">Password</label>
+        <button type="button" class="eye" id="eye" aria-label="Show password">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path id="slash" d="M3 3l18 18" style="opacity:0;transition:opacity .2s"/></svg>
+        </button>
+        <span class="msg" id="mp" role="alert"></span>
+      </div>
+      <div class="row">
+        <label><input type="checkbox"> Keep me signed in</label>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button class="btn" id="go" type="submit">
+        <span class="lbl">Sign in</span><span class="spin"></span>
+        <svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      </button>
+    </form>
+    <div class="divider">or</div>
+    <button class="alt" type="button">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.6a4.8 4.8 0 0 1-2.1 3.1v2.6h3.4c2-1.8 3.1-4.5 3.1-7.5z"/><path fill="#34A853" d="M12 22c2.8 0 5.2-.9 6.9-2.5l-3.4-2.6c-.9.6-2.1 1-3.5 1-2.7 0-5-1.8-5.8-4.3H2.7v2.7A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.2 13.6a6 6 0 0 1 0-3.9V7H2.7a10 10 0 0 0 0 9z"/><path fill="#EA4335" d="M12 6c1.5 0 2.9.5 4 1.6l3-3A10 10 0 0 0 2.7 7l3.5 2.7C7 7.800 9.300 6 12 6z"/></svg>
+      Continue with Google
+    </button>
+    <p class="foot">New to Northlight? <a href="#">Create an account</a></p>
+  </div>
+</main>
+
+<script>
+// Headline: words rise in one by one
+const hl=document.getElementById('hl');
+"Pick up right where you left off.".split(' ').forEach((w,i)=>{
+  const s=document.createElement('span');s.textContent=w+'\u00A0';s.style.animationDelay=(.25+i*.12)+'s';hl.appendChild(s);
+});
+
+// Particle field that bends toward the cursor
+const cv=document.getElementById('field'),ctx=cv.getContext('2d');
+let W,H,pts=[],mouse={x:-999,y:-999};
+const cols=['#3DF2D0','#8A74FF','#FF4D9D'];
+function size(){const r=cv.getBoundingClientRect();W=cv.width=r.width;H=cv.height=r.height;
+  pts=Array.from({length:Math.min(90,Math.floor(W*H/9000))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,c:cols[Math.random()*3|0]}));}
+addEventListener('resize',size);size();
+cv.parentElement.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top});
+cv.parentElement.addEventListener('pointerleave',()=>mouse.x=mouse.y=-999);
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function tick(){
+  ctx.clearRect(0,0,W,H);
+  for(const p of pts){
+    const dx=mouse.x-p.x,dy=mouse.y-p.y,d=Math.hypot(dx,dy);
+    if(d<180){p.vx+=dx/d*.02;p.vy+=dy/d*.02}
+    p.vx*=.99;p.vy*=.99;
+    if(!still){p.x+=p.vx;p.y+=p.vy}
+    if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+  }
+  for(let i=0;i<pts.length;i++){
+    const a=pts[i];
+    for(let j=i+1;j<pts.length;j++){
+      const b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d<110){ctx.strokeStyle=a.c;ctx.globalAlpha=(1-d/110)*.5;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+    }
+    ctx.globalAlpha=1;ctx.fillStyle=a.c;ctx.beginPath();ctx.arc(a.x,a.y,2.2,0,7);ctx.fill();
+  }
+  requestAnimationFrame(tick);
+}
+tick();
+
+// Card: soft 3D tilt + cursor glow
+const card=document.getElementById('card');
+if(!still&&matchMedia('(hover:hover)').matches){
+  card.addEventListener('pointermove',e=>{
+    const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+    card.style.setProperty('--mx',x*100+'%');card.style.setProperty('--my',y*100+'%');
+    card.style.transform=`perspective(900px) rotateY(${(x-.5)*6}deg) rotateX(${(.5-y)*6}deg)`;
+  });
+  card.addEventListener('pointerleave',()=>card.style.transform='');
+}
+
+// Show / hide password
+const pw=document.getElementById('pw'),eye=document.getElementById('eye'),slash=document.getElementById('slash');
+eye.onclick=()=>{const show=pw.type==='password';pw.type=show?'text':'password';slash.style.opacity=show?1:0;eye.setAttribute('aria-label',show?'Hide password':'Show password')};
+
+// Validation + submit states
+const f=document.getElementById('f'),go=document.getElementById('go');
+function flag(id,mid,text){const el=document.getElementById(id);el.classList.remove('bad');void el.offsetWidth;if(text){el.classList.add('bad');document.getElementById(mid).textContent=text}return !text}
+f.addEventListener('submit',e=>{
+  e.preventDefault();
+  const em=document.getElementById('email').value.trim();
+  const a=flag('fe','me',!em?'Enter your email address.':!/^\S+@\S+\.\S+$/.test(em)?'Use an address like name@company.com.':'');
+  const b=flag('fp','mp',pw.value.length<8?'Password must be at least 8 characters.':'');
+  if(!a||!b)return;
+  go.classList.add('loading');
+  setTimeout(()=>{go.classList.remove('loading');go.classList.add('done');
+    setTimeout(()=>{go.classList.remove('done')},2600)},1600);
+});
+</script>
+</body>
+</html>

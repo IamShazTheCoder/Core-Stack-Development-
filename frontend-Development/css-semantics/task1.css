@@ -1,0 +1,44 @@
+body{
+    background-color: rgb(253, 229, 199);
+}
+
+/* header{
+    background-color: beige;
+    height: 105px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 20px;
+} */
+
+nav a{
+    font-size: 20px;
+    padding: 10px 20px;   
+}
+
+button{
+    margin-top: 20px;
+    border-radius: 10px;
+    border-color: white;
+    display: flex;
+    justify-content: end;
+}
+
+h1{
+    text-align: center;
+}
+
+section{
+    background-color: aliceblue;
+    padding: 24px;
+    margin: 24px;
+}
+
+footer{
+    background-color: darkgray;
+    color: white;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}

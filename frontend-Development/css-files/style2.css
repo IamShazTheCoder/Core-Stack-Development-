@@ -1,0 +1,52 @@
+body{
+    background: linear-gradient(white,rgb(0, 229, 255),pink);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#hed{
+    background: linear-gradient(yellow, white,rgb(255, 234, 0));
+    border: 2px black solid;
+    width: 90%;
+    height: 1px;
+    margin-top: 100px;
+    border-radius: 10pc;
+    padding: 3%;
+}
+
+#box1{
+    background: linear-gradient(yellow, white,aqua);
+    border: 2px black solid;
+    width: 250px;
+    height: 250px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 100px;
+    border-radius: 10%;
+    padding: 5%;
+    display: inline-block;
+}
+
+#box2{
+    background: linear-gradient(yellow, white,aqua);
+    border: 2px black solid;
+    width: 250px;
+    height: 250px;
+    margin: 50px;
+    border-radius: 10%;
+    padding: 5%;
+    display: inline-block; 
+}
+
+#box1:hover{
+    background:linear-gradient(white,skyblue);
+}
+
+#box2:hover{
+    background:linear-gradient(white,skyblue);
+}
+
+#hed:hover{
+    background:linear-gradient(white,rgb(137, 235, 135));
+}
