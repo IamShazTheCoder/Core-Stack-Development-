@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="container">
+        <h1 style="text-align: center;">Forms Demo</h1>
+    <form>
+        <div class="row">
+        <div class="mb-3 col-md-4">
+            <label for="Email" class="form-label">Email</label>
+            <input type="email" id="Email" placeholder="Enter your email" class="form-control">
+        </div>
+
+        <div class="mb-3 col-md-8">
+            <label for="Password" class="form-label">Password</label>
+            <input type="password" id="Password" placeholder="Enter your password" class="form-control">
+        </div>
+        </div> 
+        <!--Select Options-->
+        <div class="mb-3">
+            <select class="form-select">
+              <option selected>Choose your city</option>
+              <option>Peshawar</option>
+              <option>Islamabad</option>
+              <option>Karachi</option>
+            </select>
+        </div>
+
+        <!--Checkboxes-->
+        <div class="mb-3 form-check">
+            <input type="checkbox" id="RM" class="form-check-input">
+            <label for="RM" class="form-check-label">Remeber Me</label>
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="radio" id="RB" class="form-check-input">
+            <label for="RB" class="form-check-label">Remeber Me</label>
+        </div>
+       
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+    </form>
+    </div>
+    
+    <br>
+    <br>
+    <hr>
+
+</body>
+</html>
